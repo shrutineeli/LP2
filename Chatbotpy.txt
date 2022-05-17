@@ -1,0 +1,108 @@
+Chatbot.py
+
+import random
+
+print("BOT: Hello student, What should I call you?")
+user_name = input()
+
+bot_template = "BOT : {0}"
+user_template = user_name + " : {0}"
+print("BOT: How can I help you {0} ?".format(user_name))
+
+name = "Exam Assistant" 
+examTime = "12:00 to 3:00" 
+subject = "Computer Networks"
+
+responses = { 
+"what's your name?": [ 
+"They call me {0}".format(name), 
+"I usually go by {0}".format(name), 
+"My name is the {0}".format(name) ],
+
+"what is the timing of exam?": [ 
+"The exam time is {0}".format(examTime), 
+"It's from {0} today".format(examTime), 
+"Let me check, it is from {0} ".format(examTime) ],
+
+"which subject exam today?": [ 
+"Today you have {0}'s exam".format(subject), ],
+
+
+"In case of internet failure/Power failure what to do?": [ 
+"You can restart the system and resume ur test, If the problem pesists call our emergency helpline", ],
+
+"I accidently submitted the exam , can i restart?": [ 
+"You cannot restart the exam", ],
+
+"Hello": [ 
+"Hello there!!, All the best for ur exam :)" ,
+"Hello there!, How can i help you?"],
+
+"Call support":[
+    "You can contact us at 020-456328"
+],
+
+"Help needed!":[
+    "How can I help you?"
+],
+
+"thankyou":[
+    "Glad to help!",
+],
+
+"": [  
+"Sorry, I am unable to understand that, pls contact our support \n\tAll the best for ur exam :)", ],
+}
+
+
+def related(x_text): 
+    if "name" in x_text: 
+        y_text = "what's your name?"
+    elif "time" in x_text: 
+        y_text = "what is the timing of exam?"
+    elif "hello" in x_text: 
+        y_text = "Hello"
+    elif "subject" in x_text: 
+        y_text = "which subject exam today?"
+    elif "hi" in x_text: 
+        y_text = "Hello"
+    elif "internet" in x_text:
+        y_text="In case of internet failure/Power failure what to do?"
+    elif  "power failure"  in x_text:
+        y_text="In case of internet failure/Power failure what to do?"
+    elif "submit" in x_text:
+        y_text="I accidently submitted the exam , can i restart?"
+    elif "helpline" in x_text:
+        y_text="Call support"
+    elif "help" in x_text:
+        y_text="Help needed!"
+    elif "call" in x_text:
+        y_text="Call support"
+    elif "phone" in x_text:
+        y_text="Call support"
+  
+    else: 
+        y_text = ""
+    return y_text
+
+def respond(message):
+    if message in responses: 
+        bot_message = random.choice(responses[message])
+    else: 
+        bot_message = random.choice(responses["default"])
+    return bot_message
+
+def chat_response(message): 
+  print(user_template.format(message)) 
+  response = respond(message) 
+  print(bot_template.format(response))
+
+while 1: 
+  my_input = input() 
+  my_input = my_input.lower() 
+  if my_input == "exit" or my_input == "stop": 
+      print("Thank you!")
+      break
+  related_text = related(my_input) 
+  chat_response(related_text)
+  

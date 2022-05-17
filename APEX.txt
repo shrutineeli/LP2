@@ -1,0 +1,80 @@
+Apex programming
+
+Calculator
+
+Final calc
+
+<apex:page controller="calculator">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockSection >
+                <apex:pageBlockSectionItem >
+                	<apex:outputLabel value="A"/>
+            	</apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:inputText value="{!a}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="B"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:inputText value="{!b}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="result"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:inputText value="{!output}" id="res"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:commandButton value="add" action="{!add}" reRender="res"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:commandButton value="sub" action="{!sub}" reRender="res"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:commandButton value="mul" action="{!mul}" reRender="res"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:commandButton value="div" action="{!div}" reRender="res"/>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
+
+
+
+
+public class calculator {
+    public double a{get;set;}
+    public double b{get;set;}
+    public double result{get;set;}
+    public String output{get;set;}
+    
+    public calculator(){
+        
+    }
+    
+    public void add(){
+        result = a + b;
+        output = String.valueOf(result);
+    }
+    public void sub(){
+        result = a - b;
+        output = String.valueOf(result);
+    }
+    public void mul(){
+        result = a * b;
+        output = String.valueOf(result);
+    }
+    public void div(){
+        if (b == 0){
+            output = 'Not Defined';
+        }
+        else{
+            result = a / b;
+            output = String.valueOf(result);
+        }
+    }
+}

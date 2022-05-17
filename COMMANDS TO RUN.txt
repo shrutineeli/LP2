@@ -1,0 +1,20 @@
+Commands to run
+
+Python
+1. Terminal in left hand side down corner.
+2. Once done, we have to change the directory so that it’s easy access for us to fetch the code.
+3. For that the linux command is cd Documents/ wherever your file is saved.
+4. Now to run your Python file, all you have to command is ‘python yourfilename.py’.
+
+C++
+To run C/C++ program you need to install the essential packages. For this enter the command given below in terminal window.
+sudo apt-get install build-essential
+
+1. To compile the program enter the command given below in terminal window.
+
+g++ progcpp.cpp -o progcpp
+
+2. Enter the command given below to run the program.
+
+./progcpp
+salesforce: pinkbluered07!
